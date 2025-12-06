@@ -1,27 +1,28 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import { Search, Zap, Globe } from 'lucide-react'
 import { IntegrationCard } from './integration-card'
 
 const INTEGRATIONS_CONFIG = [
   {
     name: 'Google Ads',
     description: 'Monitore e analise suas campanhas do Google Ads',
-    icon: '🔎',
+    icon: Search,
     connected: false,
     slug: 'google-ads',
   },
   {
     name: 'Meta Ads',
     description: 'Gerencie suas campanhas do Meta (Facebook & Instagram)',
-    icon: '📘',
+    icon: Zap,
     connected: false,
     slug: 'meta-ads',
   },
   {
     name: 'Bing Ads',
     description: 'Integre suas campanhas do Microsoft Bing Ads',
-    icon: '🔵',
+    icon: Globe,
     connected: false,
     slug: 'bing-ads',
   },

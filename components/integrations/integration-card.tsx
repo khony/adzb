@@ -1,14 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ExternalLink, LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface IntegrationCardProps {
   name: string
   description: string
-  icon: React.ReactNode
+  icon: LucideIcon
   connected?: boolean
   href: string
 }
@@ -16,7 +16,7 @@ interface IntegrationCardProps {
 export function IntegrationCard({
   name,
   description,
-  icon,
+  icon: Icon,
   connected = false,
   href,
 }: IntegrationCardProps) {
@@ -24,8 +24,8 @@ export function IntegrationCard({
     <Card className="hover:border-primary/50 transition-colors">
       <CardHeader>
         <div className="flex items-center justify-between mb-4">
-          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center text-2xl">
-            {icon}
+          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+            <Icon className="w-6 h-6" />
           </div>
           {connected && (
             <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
