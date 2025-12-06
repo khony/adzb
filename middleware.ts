@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
         ? orgs.organizations[0].slug
         : (orgs.organizations as any).slug
       return NextResponse.redirect(
-        new URL(`/${slug}/keywords`, request.url)
+        new URL(`/${slug}/dashboard`, request.url)
       )
     } else {
       return NextResponse.redirect(new URL('/onboarding', request.url))

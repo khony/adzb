@@ -101,9 +101,13 @@ export function KeywordItem({ keyword, onEdit, canDelete, onDeleteSuccess }: Key
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            {keyword.category && <Badge variant="secondary">{keyword.category}</Badge>}
-            <span>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            {keyword.category && keyword.category.split(',').map((tag, index) => (
+              <Badge key={index} variant="secondary">
+                {tag.trim()}
+              </Badge>
+            ))}
+            <span className="text-xs">
               Criada{' '}
               {formatDistanceToNow(new Date(keyword.created_at), {
                 addSuffix: true,

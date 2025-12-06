@@ -156,14 +156,17 @@ export function KeywordForm({
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Categoria (opcional)</FormLabel>
+                  <FormLabel>Tags (opcional)</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="SEO, Marketing, etc."
+                      placeholder="marca, produto, concorrente"
                       {...field}
                       disabled={isPending}
                     />
                   </FormControl>
+                  <p className="text-xs text-muted-foreground">
+                    Separe múltiplas tags por vírgula
+                  </p>
                   <FormMessage />
                 </FormItem>
               )}

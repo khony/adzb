@@ -27,7 +27,7 @@ export function OrgSwitcher() {
 
   const handleSelectOrg = (org: typeof organizations[0]) => {
     setActiveOrg(org)
-    router.push(`/${org.slug}/keywords`)
+    router.push(`/${org.slug}/dashboard`)
   }
 
   return (

@@ -34,7 +34,7 @@ export function AcceptInvitationButton({ token, organizationSlug }: AcceptInvita
 
         const slug = result.data?.slug || organizationSlug
         if (slug) {
-          router.push(`/${slug}/keywords`)
+          router.push(`/${slug}/dashboard`)
         }
       }
     })
