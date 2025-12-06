@@ -13,16 +13,16 @@ interface SidebarProps {
 export function Sidebar({ user }: SidebarProps) {
   return (
     <div className="flex h-full w-64 flex-col border-r bg-background">
-      {/* Organization Switcher */}
-      <div className="p-4">
-        <OrgSwitcher />
+      {/* Navigation */}
+      <div className="flex-1 overflow-y-auto p-4">
+        <SidebarNav />
       </div>
 
       <Separator />
 
-      {/* Navigation */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <SidebarNav />
+      {/* Organization Switcher */}
+      <div className="p-4">
+        <OrgSwitcher />
       </div>
 
       <Separator />
