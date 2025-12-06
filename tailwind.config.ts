@@ -52,6 +52,27 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        /* ADZB Brand Colors - Use diretamente: bg-brand-purple, text-brand-pink, etc. */
+        brand: {
+          purple: "hsl(var(--brand-purple))",
+          "pink-light": "hsl(var(--brand-pink-light))",
+          pink: "hsl(var(--brand-pink))",
+          "blue-light": "hsl(var(--brand-blue-light))",
+          blue: "hsl(var(--brand-blue))",
+        },
+        /* Cores auxiliares */
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
