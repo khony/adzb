@@ -25,6 +25,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
+import { EvidenceListSkeleton } from './evidence-skeleton'
 
 export function EvidenceList() {
   const { activeOrg } = useActiveOrg()
@@ -46,6 +47,10 @@ export function EvidenceList() {
 
   if (!activeOrg) {
     return null
+  }
+
+  if (isLoading) {
+    return <EvidenceListSkeleton />
   }
 
   const formatDate = (date: string) => {

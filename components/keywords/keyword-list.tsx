@@ -5,6 +5,7 @@ import { useKeywords } from '@/lib/hooks/use-keywords'
 import { useActiveOrg } from '@/contexts/active-org-context'
 import { KeywordItem } from './keyword-item'
 import { KeywordForm } from './keyword-form'
+import { KeywordListSkeleton } from './keyword-skeleton'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import type { Keyword } from '@/lib/types'
@@ -29,6 +30,10 @@ export function KeywordList() {
   const handleCloseForm = () => {
     setShowForm(false)
     setSelectedKeyword(undefined)
+  }
+
+  if (isLoading) {
+    return <KeywordListSkeleton />
   }
 
   if (keywords.length === 0) {
