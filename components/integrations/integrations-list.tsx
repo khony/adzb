@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { Search, Zap, Globe } from 'lucide-react'
+import { Search, Zap, Globe, LineChart } from 'lucide-react'
 import { IntegrationCard } from './integration-card'
 
 const INTEGRATIONS_CONFIG = [
@@ -25,6 +25,13 @@ const INTEGRATIONS_CONFIG = [
     icon: Globe,
     connected: false,
     slug: 'bing-ads',
+  },
+  {
+    name: 'Google Search Console',
+    description: 'Monitore a presença do seu site nos resultados de busca',
+    icon: LineChart,
+    connected: false,
+    slug: 'google-search-console',
   },
 ]
 

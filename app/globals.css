@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    /* Font definitions */
+    font-size: 14px;
+
     /* ============================================
        ADZB Brand Colors - Paleta Principal
        Edite estas variáveis para alterar as cores do sistema

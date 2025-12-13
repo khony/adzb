@@ -82,3 +82,26 @@ export type EvidenceDetail = Evidence & {
   domains: EvidenceDomain[]
   screenshots: EvidenceScreenshot[]
 }
+
+export type IntegrationProvider =
+  | 'google_search_console'
+  | 'google_ads'
+  | 'meta_ads'
+  | 'bing_ads'
+
+export type Integration = {
+  id: string
+  organization_id: string
+  provider: IntegrationProvider
+  access_token: string | null
+  refresh_token: string | null
+  token_expires_at: string | null
+  account_id: string | null
+  account_email: string | null
+  account_name: string | null
+  is_active: boolean
+  settings: Record<string, unknown>
+  connected_by: string | null
+  created_at: string
+  updated_at: string
+}

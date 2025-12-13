@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ADZB - Keyword Management",
-  description: "Multi-tenant keyword management platform",
+  title: "Adspika - Ads billing and statistics management platform",
+  description: "Adspika - Ads billing and statistics management platform",
   icons: {
     icon: [
       {

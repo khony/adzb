@@ -1,40 +1,42 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
-import type { EvidenceScreenshot } from '@/lib/types'
-import { createClient } from '@/lib/supabase/client'
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { createClient } from "@/lib/supabase/client";
+import type { EvidenceScreenshot } from "@/lib/types";
+import Image from "next/image";
+import { useState } from "react";
 
 interface EvidenceScreenshotsProps {
-  screenshots: EvidenceScreenshot[]
+  screenshots: EvidenceScreenshot[];
 }
 
-const ENGINES = ['google', 'yahoo', 'bing', 'meta'] as const
+const ENGINES = ["google", "yahoo", "bing", "meta"] as const;
 const ENGINE_LABELS: Record<string, string> = {
-  google: 'Google',
-  yahoo: 'Yahoo',
-  bing: 'Bing',
-  meta: 'Meta',
-}
+  google: "Google",
+  yahoo: "Yahoo",
+  bing: "Bing",
+  meta: "Meta",
+};
 
 export function EvidenceScreenshots({ screenshots }: EvidenceScreenshotsProps) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const getScreenshotForEngine = (engine: string) => {
-    return screenshots.find((s) => s.engine === engine)
-  }
+    return screenshots.find((s) => s.engine === engine);
+  };
 
   const getImageUrl = (screenshot: EvidenceScreenshot) => {
-    if (!screenshot.file_path) return null
+    if (!screenshot.file_path) return null;
 
-    const supabase = createClient()
+    const supabase = createClient();
     const {
       data: { publicUrl },
-    } = supabase.storage.from('evidences').getPublicUrl(screenshot.file_path)
+    } = supabase.storage
+      .from("evidences_screenshots")
+      .getPublicUrl(screenshot.file_path);
 
-    return publicUrl
-  }
+    return publicUrl;
+  };
 
   return (
     <div className="space-y-3">
@@ -42,8 +44,8 @@ export function EvidenceScreenshots({ screenshots }: EvidenceScreenshotsProps) {
 
       <div className="grid grid-cols-2 gap-4">
         {ENGINES.map((engine) => {
-          const screenshot = getScreenshotForEngine(engine)
-          const imageUrl = screenshot ? getImageUrl(screenshot) : null
+          const screenshot = getScreenshotForEngine(engine);
+          const imageUrl = screenshot ? getImageUrl(screenshot) : null;
 
           return (
             <div
@@ -79,12 +81,15 @@ export function EvidenceScreenshots({ screenshots }: EvidenceScreenshotsProps) {
                 </div>
               )}
             </div>
-          )
+          );
         })}
       </div>
 
       {/* Image Modal */}
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog
+        open={!!selectedImage}
+        onOpenChange={() => setSelectedImage(null)}
+      >
         <DialogContent className="max-w-4xl">
           {selectedImage && (
             <div className="relative w-full h-96">
@@ -100,5 +105,5 @@ export function EvidenceScreenshots({ screenshots }: EvidenceScreenshotsProps) {
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }
