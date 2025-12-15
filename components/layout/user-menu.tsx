@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useTransition } from 'react'
+import { useTheme } from 'next-themes'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { LogOut, Settings, User as UserIcon } from 'lucide-react'
+import { LogOut, Moon, Sun, User as UserIcon } from 'lucide-react'
 import { logoutUser } from '@/lib/actions/auth'
 import { useRouter } from 'next/navigation'
 import type { Profile } from '@/lib/types'
@@ -23,11 +24,16 @@ interface UserMenuProps {
 export function UserMenu({ user }: UserMenuProps) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
+  const { theme, setTheme } = useTheme()
 
   const handleLogout = () => {
     startTransition(async () => {
       await logoutUser()
     })
+  }
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
   const initials = user.full_name
@@ -62,6 +68,19 @@ export function UserMenu({ user }: UserMenuProps) {
         <DropdownMenuItem onClick={() => router.push('/profile')} className="cursor-pointer">
           <UserIcon className="mr-2 h-4 w-4" />
           Perfil
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={toggleTheme} className="cursor-pointer">
+          {theme === 'dark' ? (
+            <>
+              <Sun className="mr-2 h-4 w-4" />
+              Modo Claro
+            </>
+          ) : (
+            <>
+              <Moon className="mr-2 h-4 w-4" />
+              Modo Escuro
+            </>
+          )}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem

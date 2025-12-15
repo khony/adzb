@@ -62,8 +62,8 @@ export function SidebarNav() {
           asChild
           variant={route.active ? 'secondary' : 'ghost'}
           className={cn(
-            'justify-start',
-            route.active && 'bg-secondary font-medium'
+            'justify-start hover:bg-primary hover:text-primary-foreground',
+            route.active && 'bg-primary text-primary-foreground font-medium hover:bg-primary/90'
           )}
         >
           <Link href={route.href}>

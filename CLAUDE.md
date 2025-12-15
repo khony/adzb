@@ -26,7 +26,7 @@ app/
 │   │   ├── dashboard/         # Dashboard com estatísticas
 │   │   ├── keywords/          # Gerenciamento de palavras-chave
 │   │   ├── evidences/         # Lista e detalhes de evidências
-│   │   ├── negotiations/      # Negociações (em desenvolvimento)
+│   │   ├── negotiations/      # Gerenciamento de negociações
 │   │   ├── integrations/      # Integrações com plataformas de ads
 │   │   └── settings/          # Configurações da organização
 │   ├── profile/               # Perfil do usuário
@@ -38,6 +38,7 @@ components/
 ├── integrations/              # Componentes de integrações
 ├── keywords/                  # Componentes de palavras-chave
 ├── layout/                    # Sidebar, navegação, menus
+├── negotiations/              # Componentes de negociações
 ├── organizations/             # Membros, convites, configurações
 ├── profile/                   # Formulário de perfil
 ├── providers/                 # Context providers
@@ -110,9 +111,15 @@ lib/
   - [ ] Buscar dados da API
 
 ### Negociações
-- [ ] Listar negociações
-- [ ] Criar negociação
-- [ ] Gerenciar status
+- [x] Listar negociações com filtro por status
+- [x] Criar negociação manualmente
+- [x] Visualizar detalhes da negociação
+- [x] Gerenciar status (pendente/em andamento/resolvido/não resolvido)
+- [x] Vincular evidência (opcional)
+- [x] Destinatários exibidos como badges
+- [x] Skeleton loading
+- [x] Realtime updates via Supabase
+- [x] ID como UUIDv7 (time-ordered)
 
 ### Perfil
 - [x] Editar nome
@@ -186,6 +193,33 @@ type Integration = {
   created_at: string
   updated_at: string
 }
+
+type NegotiationStatus = 'pending' | 'in_progress' | 'resolved' | 'unresolved'
+
+type Negotiation = {
+  id: string                    // UUIDv7
+  organization_id: string
+  evidence_id: string | null    // Opcional
+  subject: string
+  content: string
+  recipients: string            // Emails separados por vírgula
+  status: NegotiationStatus
+  created_by: string
+  created_at: string
+  updated_at: string
+  last_interaction_at: string
+}
+
+type NegotiationAttachment = {
+  id: string
+  negotiation_id: string
+  file_name: string
+  file_path: string
+  file_size: number | null
+  mime_type: string | null
+  uploaded_by: string | null
+  created_at: string
+}
 ```
 
 ## Hooks Personalizados
@@ -195,6 +229,7 @@ type Integration = {
 | `useKeywords` | Lista palavras-chave com realtime |
 | `useEvidences` | Lista evidências com filtros e realtime |
 | `useEvidenceDetail` | Detalhes de uma evidência |
+| `useNegotiations` | Lista negociações com filtros e realtime |
 | `useDashboardStats` | Estatísticas do dashboard |
 | `useIntegration` | Status de integração por provider |
 | `useToast` | Notificações toast |
@@ -205,6 +240,7 @@ type Integration = {
 Cada seção com carregamento de dados possui um componente skeleton correspondente:
 - `KeywordListSkeleton`
 - `EvidenceListSkeleton`
+- `NegotiationListSkeleton`
 - `DashboardSkeleton`
 
 ### Cards de Estatísticas
@@ -217,6 +253,7 @@ A cor é aplicada como borda à esquerda (4px) e no ícone.
 Hooks que usam realtime do Supabase:
 - `useKeywords` - canal `keywords:{organizationId}`
 - `useEvidences` - canal `evidences:{organizationId}`
+- `useNegotiations` - canal `negotiations:{organizationId}`
 
 ## Variáveis de Ambiente
 
@@ -235,8 +272,9 @@ GOOGLE_CLIENT_SECRET=
 
 ## Próximos Passos
 
-1. Implementar tabela e funcionalidades de negociações
+1. Implementar upload de anexos para negociações
 2. Implementar integrações com plataformas de ads
 3. Adicionar mais filtros na lista de evidências
 4. Implementar exportação de relatórios
 5. Adicionar notificações em tempo real
+6. Adicionar contagem de negociações no dashboard

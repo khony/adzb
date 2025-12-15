@@ -105,3 +105,55 @@ export type Integration = {
   created_at: string
   updated_at: string
 }
+
+// Negotiations
+export type NegotiationStatus = 'pending' | 'in_progress' | 'resolved' | 'unresolved'
+
+export type Negotiation = {
+  id: string
+  organization_id: string
+  evidence_id: string | null
+  subject: string
+  content: string
+  recipients: string
+  status: NegotiationStatus
+  created_by: string
+  created_at: string
+  updated_at: string
+  last_interaction_at: string
+}
+
+export type NegotiationAttachment = {
+  id: string
+  negotiation_id: string
+  file_name: string
+  file_path: string
+  file_size: number | null
+  mime_type: string | null
+  uploaded_by: string | null
+  created_at: string
+}
+
+export type NegotiationWithEvidence = Negotiation & {
+  evidence?: {
+    id: string
+    detected_at: string
+    keyword?: {
+      keyword: string
+    }
+  } | null
+}
+
+export type NegotiationDetail = Negotiation & {
+  evidence?: {
+    id: string
+    detected_at: string
+    is_positive: boolean
+    keyword?: {
+      id: string
+      keyword: string
+      category: string | null
+    }
+  } | null
+  attachments: NegotiationAttachment[]
+}

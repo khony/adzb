@@ -1,5 +1,7 @@
 'use client'
 
+import { NegotiationList } from '@/components/negotiations/negotiation-list'
+
 export default function NegotiationsPage() {
   return (
     <div className="container py-6">
@@ -9,6 +11,8 @@ export default function NegotiationsPage() {
           Gerencie as negociações da sua organização
         </p>
       </div>
+
+      <NegotiationList />
     </div>
   )
 }

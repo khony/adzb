@@ -48,38 +48,37 @@ export function EvidenceScreenshots({ screenshots }: EvidenceScreenshotsProps) {
           const imageUrl = screenshot ? getImageUrl(screenshot) : null;
 
           return (
-            <div
-              key={engine}
-              className="rounded-lg border bg-muted overflow-hidden aspect-square flex items-center justify-center"
-            >
-              {imageUrl ? (
-                <button
-                  onClick={() => setSelectedImage(imageUrl)}
-                  className="relative w-full h-full cursor-pointer hover:opacity-90 transition-opacity group"
-                >
-                  <Image
-                    src={imageUrl}
-                    alt={`${ENGINE_LABELS[engine]} screenshot`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                    <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                      Expandir
-                    </span>
+            <div key={engine} className="space-y-2">
+              <p className="text-sm font-medium text-foreground">
+                {ENGINE_LABELS[engine]}
+              </p>
+              <div className="rounded-lg border bg-muted overflow-hidden aspect-square flex items-center justify-center">
+                {imageUrl ? (
+                  <button
+                    onClick={() => setSelectedImage(imageUrl)}
+                    className="relative w-full h-full cursor-pointer hover:opacity-90 transition-opacity group"
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={`${ENGINE_LABELS[engine]} screenshot`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        Expandir
+                      </span>
+                    </div>
+                  </button>
+                ) : (
+                  <div className="text-center">
+                    <p className="text-xs text-muted-foreground">
+                      Não disponível
+                    </p>
                   </div>
-                </button>
-              ) : (
-                <div className="text-center">
-                  <p className="text-sm font-medium text-muted-foreground">
-                    {ENGINE_LABELS[engine]}
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Não disponível
-                  </p>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           );
         })}
