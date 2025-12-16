@@ -1,0 +1,292 @@
+{
+  "common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "edit": "Edit",
+    "create": "Create",
+    "creating": "Creating...",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "optional": "optional",
+    "required": "required",
+    "actions": "Actions",
+    "status": "Status",
+    "total": "Total",
+    "view": "View",
+    "viewDetails": "View details",
+    "unknown": "Unknown"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Sign in to your account to continue",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "********",
+      "submit": "Sign In",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Fill in the details to create your account",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "********",
+      "submit": "Create Account",
+      "submitting": "Creating account...",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "onboarding": {
+      "title": "Create your Organization",
+      "subtitle": "Let's start by creating your first organization",
+      "orgName": "Organization Name",
+      "orgNamePlaceholder": "My Company",
+      "orgNameDescription": "This will be the name of your first organization",
+      "submit": "Create Organization",
+      "submitting": "Creating..."
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "keywords": "Keywords",
+    "evidences": "Evidences",
+    "negotiations": "Negotiations",
+    "integrations": "Integrations",
+    "settings": "Settings"
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode",
+    "signOut": "Sign Out",
+    "signingOut": "Signing out...",
+    "user": "User"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview of your organization",
+    "stats": {
+      "keywords": "Keywords",
+      "keywordsDescription": "Total registered keywords",
+      "evidences": "Evidences",
+      "evidencesDescription": "Total detected evidences",
+      "negativeEvidences": "Negative Evidences",
+      "negativeEvidencesDescription": "Evidences with negative result",
+      "negotiations": "Negotiations",
+      "negotiationsDescription": "Total ongoing negotiations",
+      "categories": "Categories",
+      "categoriesDescription": "Unique keyword categories",
+      "activeUsers": "Active Users",
+      "activeUsersDescription": "Organization members"
+    },
+    "chart": {
+      "title": "Negative Evidences",
+      "description": "Number of negative evidences in the last 7 days",
+      "evidence": "evidence",
+      "evidences": "evidences"
+    }
+  },
+  "keywords": {
+    "title": "Keywords",
+    "subtitle": "Manage your organization's keywords",
+    "addKeyword": "Add Keyword",
+    "newKeyword": "New Keyword",
+    "editKeyword": "Edit Keyword",
+    "noKeywords": "No keywords yet",
+    "noKeywordsDescription": "Start by adding your first keyword to organize your content.",
+    "form": {
+      "newTitle": "New Keyword",
+      "editTitle": "Edit Keyword",
+      "newDescription": "Add a new keyword to your organization",
+      "editDescription": "Update keyword information",
+      "keyword": "Keyword",
+      "keywordPlaceholder": "my-keyword",
+      "description": "Description",
+      "descriptionOptional": "Description (optional)",
+      "descriptionPlaceholder": "Describe what this keyword represents...",
+      "tags": "Tags",
+      "tagsOptional": "Tags (optional)",
+      "tagsPlaceholder": "brand, product, competitor",
+      "tagsHelp": "Separate multiple tags with commas"
+    },
+    "messages": {
+      "created": "Keyword created",
+      "updated": "Keyword updated",
+      "deleted": "Keyword deleted",
+      "deleteConfirm": "Are you sure you want to delete this keyword?"
+    }
+  },
+  "evidences": {
+    "title": "Evidences",
+    "subtitle": "View detected evidences",
+    "filterByType": "Filter by type",
+    "allEvidences": "All evidences",
+    "positive": "Positive",
+    "negative": "Negative",
+    "positiveLabel": "Positive",
+    "negativeLabel": "Negative",
+    "noEvidences": "No evidences found",
+    "noEvidencesDescription": "Evidences will be automatically created by the monitoring system",
+    "table": {
+      "status": "Status",
+      "keyword": "Keyword",
+      "tags": "Tags",
+      "detectedAt": "Detected at",
+      "actions": "Actions"
+    },
+    "detail": {
+      "title": "Evidence Details",
+      "domains": "Detected Domains",
+      "screenshots": "Screenshots",
+      "noScreenshots": "No screenshots available",
+      "noDomains": "No domains detected"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Manage your personal information",
+    "uploadPhoto": "Change photo",
+    "uploading": "Uploading...",
+    "uploadHint": "JPG, PNG or WebP. Max 2MB.",
+    "fullName": "Full Name",
+    "email": "Email",
+    "emailHint": "Email cannot be changed",
+    "saveChanges": "Save Changes",
+    "messages": {
+      "avatarUpdated": "Avatar updated",
+      "avatarUpdatedDescription": "Your profile picture has been updated",
+      "avatarError": "Error uploading avatar",
+      "avatarSizeError": "Image must be at most 2MB",
+      "avatarTypeError": "Only images are allowed",
+      "profileUpdated": "Profile updated",
+      "profileUpdatedDescription": "Your information has been updated"
+    }
+  },
+  "organizations": {
+    "title": "Organizations",
+    "switchOrg": "Switch organization",
+    "createOrg": "Create organization",
+    "settings": {
+      "title": "Settings",
+      "general": "General",
+      "members": "Members",
+      "invitations": "Invitations"
+    },
+    "members": {
+      "title": "Members",
+      "subtitle": "Manage your organization members",
+      "inviteMember": "Invite Member",
+      "removeMember": "Remove member",
+      "removeConfirm": "Are you sure you want to remove this member?",
+      "you": "You",
+      "roles": {
+        "admin": "Admin",
+        "member": "Member"
+      }
+    },
+    "invitations": {
+      "title": "Invitations",
+      "subtitle": "Manage pending invitations",
+      "noInvitations": "No pending invitations",
+      "inviteDialog": {
+        "title": "Invite Member",
+        "description": "Send an invitation to add a new member to the organization",
+        "email": "Email",
+        "emailPlaceholder": "email@example.com",
+        "emailDescription": "Email of the person you want to invite",
+        "role": "Role",
+        "rolePlaceholder": "Select a role",
+        "roleDescription": "Admins can invite and remove members",
+        "submit": "Create Invitation",
+        "submitting": "Creating..."
+      },
+      "messages": {
+        "created": "Invitation created",
+        "createdDescription": "The invitation link is available in the list below",
+        "revoked": "Invitation revoked",
+        "accepted": "Invitation accepted",
+        "expired": "Invitation expired"
+      },
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "expired": "Expired"
+      }
+    }
+  },
+  "integrations": {
+    "title": "Integrations",
+    "subtitle": "Connect your advertising platforms",
+    "connected": "Connected",
+    "notConnected": "Not connected",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "configure": "Configure",
+    "providers": {
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "bingAds": "Bing Ads",
+      "googleSearchConsole": "Google Search Console"
+    }
+  },
+  "validation": {
+    "emailInvalid": "Invalid email",
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "passwordMinLength": "Password must be at least {min} characters",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least {min} characters",
+    "keywordRequired": "Keyword is required",
+    "keywordMaxLength": "Keyword must be at most {max} characters",
+    "descriptionMaxLength": "Description must be at most {max} characters",
+    "categoryMaxLength": "Category must be at most {max} characters",
+    "orgNameRequired": "Organization name is required",
+    "orgNameMinLength": "Name must be at least {min} characters"
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "notAuthenticated": "Not authenticated",
+    "notAuthorized": "Not authorized",
+    "notFound": "Not found",
+    "serverError": "Server error"
+  },
+  "metadata": {
+    "login": {
+      "title": "Login - Adspika",
+      "description": "Sign in to your account"
+    },
+    "register": {
+      "title": "Create Account - Adspika",
+      "description": "Create your Adspika account"
+    },
+    "onboarding": {
+      "title": "Welcome - Adspika",
+      "description": "Create your first organization"
+    },
+    "dashboard": {
+      "title": "Dashboard - Adspika",
+      "description": "Overview of your organization"
+    }
+  }
+}

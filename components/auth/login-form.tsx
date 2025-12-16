@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { loginSchema, type LoginInput } from '@/lib/validations/auth'
+import { z } from 'zod'
 import { loginUser } from '@/lib/actions/auth'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,11 +15,20 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import Link from 'next/link'
+import { Link } from '@/components/ui/link'
+import { useTranslations } from 'next-intl'
 
 export function LoginForm() {
+  const t = useTranslations()
   const [error, setError] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
+
+  const loginSchema = z.object({
+    email: z.string().email({ message: t('validation.emailInvalid') }),
+    password: z.string().min(1, { message: t('validation.passwordRequired') }),
+  })
+
+  type LoginInput = z.infer<typeof loginSchema>
 
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
@@ -47,9 +56,9 @@ export function LoginForm() {
   return (
     <div className="w-full max-w-md space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Login</h1>
+        <h1 className="text-3xl font-bold">{t('auth.login.title')}</h1>
         <p className="text-muted-foreground">
-          Entre com sua conta para continuar
+          {t('auth.login.subtitle')}
         </p>
       </div>
 
@@ -60,11 +69,11 @@ export function LoginForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t('auth.login.email')}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="seu@email.com"
+                    placeholder={t('auth.login.emailPlaceholder')}
                     {...field}
                     disabled={isPending}
                   />
@@ -79,11 +88,11 @@ export function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Senha</FormLabel>
+                <FormLabel>{t('auth.login.password')}</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="••••••••"
+                    placeholder={t('auth.login.passwordPlaceholder')}
                     {...field}
                     disabled={isPending}
                   />
@@ -100,15 +109,15 @@ export function LoginForm() {
           )}
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending ? 'Entrando...' : 'Entrar'}
+            {isPending ? t('auth.login.submitting') : t('auth.login.submit')}
           </Button>
         </form>
       </Form>
 
       <div className="text-center text-sm">
-        Não tem uma conta?{' '}
+        {t('auth.login.noAccount')}{' '}
         <Link href="/register" className="font-medium underline underline-offset-4">
-          Registre-se
+          {t('auth.login.signUp')}
         </Link>
       </div>
     </div>

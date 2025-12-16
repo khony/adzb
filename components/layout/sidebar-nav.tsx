@@ -1,15 +1,17 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { useActiveOrg } from '@/contexts/active-org-context'
-import { LayoutDashboard, Key, Settings, Users, Plug, Eye, Handshake } from 'lucide-react'
+import { LayoutDashboard, Key, Settings, Plug, Eye, Handshake } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Link } from '@/components/ui/link'
+import { useTranslations } from 'next-intl'
 
 export function SidebarNav() {
   const pathname = usePathname()
   const { activeOrg } = useActiveOrg()
+  const t = useTranslations('navigation')
 
   if (!activeOrg) {
     return null
@@ -17,40 +19,40 @@ export function SidebarNav() {
 
   const routes = [
     {
-      label: 'Dashboard',
+      label: t('dashboard'),
       icon: LayoutDashboard,
       href: `/${activeOrg.slug}/dashboard`,
-      active: pathname === `/${activeOrg.slug}/dashboard` || pathname.startsWith(`/${activeOrg.slug}/dashboard`),
+      active: pathname.includes(`/${activeOrg.slug}/dashboard`),
     },
     {
-      label: 'Palavras-chave',
+      label: t('keywords'),
       icon: Key,
       href: `/${activeOrg.slug}/keywords`,
-      active: pathname === `/${activeOrg.slug}/keywords` || pathname.startsWith(`/${activeOrg.slug}/keywords`),
+      active: pathname.includes(`/${activeOrg.slug}/keywords`),
     },
     {
-      label: 'Evidências',
+      label: t('evidences'),
       icon: Eye,
       href: `/${activeOrg.slug}/evidences`,
-      active: pathname === `/${activeOrg.slug}/evidences` || pathname.startsWith(`/${activeOrg.slug}/evidences`),
+      active: pathname.includes(`/${activeOrg.slug}/evidences`),
     },
     {
-      label: 'Negociações',
+      label: t('negotiations'),
       icon: Handshake,
       href: `/${activeOrg.slug}/negotiations`,
-      active: pathname === `/${activeOrg.slug}/negotiations` || pathname.startsWith(`/${activeOrg.slug}/negotiations`),
+      active: pathname.includes(`/${activeOrg.slug}/negotiations`),
     },
     {
-      label: 'Integrações',
+      label: t('integrations'),
       icon: Plug,
       href: `/${activeOrg.slug}/integrations`,
-      active: pathname === `/${activeOrg.slug}/integrations` || pathname.startsWith(`/${activeOrg.slug}/integrations`),
+      active: pathname.includes(`/${activeOrg.slug}/integrations`),
     },
     {
-      label: 'Configurações',
+      label: t('settings'),
       icon: Settings,
       href: `/${activeOrg.slug}/settings/general`,
-      active: pathname.startsWith(`/${activeOrg.slug}/settings`),
+      active: pathname.includes(`/${activeOrg.slug}/settings`),
     },
   ]
 

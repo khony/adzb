@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { registerSchema, type RegisterInput } from '@/lib/validations/auth'
+import { z } from 'zod'
 import { registerUser } from '@/lib/actions/auth'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,11 +15,21 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import Link from 'next/link'
+import { Link } from '@/components/ui/link'
+import { useTranslations } from 'next-intl'
 
 export function RegisterForm() {
+  const t = useTranslations()
   const [error, setError] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
+
+  const registerSchema = z.object({
+    email: z.string().email({ message: t('validation.emailInvalid') }),
+    password: z.string().min(8, { message: t('validation.passwordMinLength', { min: 8 }) }),
+    fullName: z.string().min(2, { message: t('validation.nameMinLength', { min: 2 }) }),
+  })
+
+  type RegisterInput = z.infer<typeof registerSchema>
 
   const form = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
@@ -49,9 +59,9 @@ export function RegisterForm() {
   return (
     <div className="w-full max-w-md space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="text-3xl font-bold">Criar Conta</h1>
+        <h1 className="text-3xl font-bold">{t('auth.register.title')}</h1>
         <p className="text-muted-foreground">
-          Preencha os dados para criar sua conta
+          {t('auth.register.subtitle')}
         </p>
       </div>
 
@@ -62,10 +72,10 @@ export function RegisterForm() {
             name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nome Completo</FormLabel>
+                <FormLabel>{t('auth.register.fullName')}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="João Silva"
+                    placeholder={t('auth.register.fullNamePlaceholder')}
                     {...field}
                     disabled={isPending}
                   />
@@ -80,11 +90,11 @@ export function RegisterForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t('auth.register.email')}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="seu@email.com"
+                    placeholder={t('auth.register.emailPlaceholder')}
                     {...field}
                     disabled={isPending}
                   />
@@ -99,11 +109,11 @@ export function RegisterForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Senha</FormLabel>
+                <FormLabel>{t('auth.register.password')}</FormLabel>
                 <FormControl>
                   <Input
                     type="password"
-                    placeholder="••••••••"
+                    placeholder={t('auth.register.passwordPlaceholder')}
                     {...field}
                     disabled={isPending}
                   />
@@ -120,15 +130,15 @@ export function RegisterForm() {
           )}
 
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending ? 'Criando conta...' : 'Criar Conta'}
+            {isPending ? t('auth.register.submitting') : t('auth.register.submit')}
           </Button>
         </form>
       </Form>
 
       <div className="text-center text-sm">
-        Já tem uma conta?{' '}
+        {t('auth.register.hasAccount')}{' '}
         <Link href="/login" className="font-medium underline underline-offset-4">
-          Faça login
+          {t('auth.register.signIn')}
         </Link>
       </div>
     </div>

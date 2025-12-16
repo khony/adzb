@@ -27,8 +27,8 @@ export function NegativeEvidencesChart({ data }: NegativeEvidencesChartProps) {
   return (
     <Card className="col-span-full">
       <CardHeader>
-        <CardTitle>Evidencias Negativas</CardTitle>
-        <CardDescription>Quantidade de evidencias negativas nos ultimos 7 dias</CardDescription>
+        <CardTitle>Evidências Negativas</CardTitle>
+        <CardDescription>Quantidade de evidências negativas nos últimos 7 dias</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="h-[300px]">
@@ -60,9 +60,9 @@ export function NegativeEvidencesChart({ data }: NegativeEvidencesChartProps) {
                             {format(parseISO(data.date), "EEEE, dd 'de' MMMM", { locale: ptBR })}
                           </div>
                           <div className="flex items-center gap-2">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
+                            <div className="h-2.5 w-2.5 rounded-full bg-primary" />
                             <span className="text-sm font-bold">
-                              {data.count} evidencia{data.count !== 1 ? 's' : ''}
+                              {data.count} evidência{data.count !== 1 ? 's' : ''}
                             </span>
                           </div>
                         </div>
@@ -75,9 +75,9 @@ export function NegativeEvidencesChart({ data }: NegativeEvidencesChartProps) {
               <Line
                 type="monotone"
                 dataKey="count"
-                stroke="hsl(var(--destructive))"
+                stroke="var(--primary)"
                 strokeWidth={2}
-                dot={{ fill: 'hsl(var(--destructive))', strokeWidth: 2, r: 4 }}
+                dot={{ fill: 'var(--primary)', strokeWidth: 2, r: 4 }}
                 activeDot={{ r: 6 }}
               />
             </LineChart>

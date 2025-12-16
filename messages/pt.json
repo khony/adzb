@@ -1,0 +1,292 @@
+{
+  "common": {
+    "save": "Salvar",
+    "saving": "Salvando...",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "deleting": "Excluindo...",
+    "edit": "Editar",
+    "create": "Criar",
+    "creating": "Criando...",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "confirm": "Confirmar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "none": "Nenhum",
+    "yes": "Sim",
+    "no": "Não",
+    "optional": "opcional",
+    "required": "obrigatório",
+    "actions": "Ações",
+    "status": "Status",
+    "total": "Total",
+    "view": "Visualizar",
+    "viewDetails": "Ver detalhes",
+    "unknown": "Desconhecido"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Entre com sua conta para continuar",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "password": "Senha",
+      "passwordPlaceholder": "********",
+      "submit": "Entrar",
+      "submitting": "Entrando...",
+      "noAccount": "Não tem uma conta?",
+      "signUp": "Registre-se"
+    },
+    "register": {
+      "title": "Criar Conta",
+      "subtitle": "Preencha os dados para criar sua conta",
+      "fullName": "Nome Completo",
+      "fullNamePlaceholder": "João Silva",
+      "email": "Email",
+      "emailPlaceholder": "seu@email.com",
+      "password": "Senha",
+      "passwordPlaceholder": "********",
+      "submit": "Criar Conta",
+      "submitting": "Criando conta...",
+      "hasAccount": "Já tem uma conta?",
+      "signIn": "Faça login"
+    },
+    "onboarding": {
+      "title": "Crie sua Organização",
+      "subtitle": "Vamos começar criando sua primeira organização",
+      "orgName": "Nome da Organização",
+      "orgNamePlaceholder": "Minha Empresa",
+      "orgNameDescription": "Este será o nome da sua primeira organização",
+      "submit": "Criar Organização",
+      "submitting": "Criando..."
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "keywords": "Palavras-chave",
+    "evidences": "Evidências",
+    "negotiations": "Negociações",
+    "integrations": "Integrações",
+    "settings": "Configurações"
+  },
+  "userMenu": {
+    "profile": "Perfil",
+    "lightMode": "Modo Claro",
+    "darkMode": "Modo Escuro",
+    "signOut": "Sair",
+    "signingOut": "Saindo...",
+    "user": "Usuário"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Visão geral da sua organização",
+    "stats": {
+      "keywords": "Palavras-chave",
+      "keywordsDescription": "Total de palavras-chave cadastradas",
+      "evidences": "Evidências",
+      "evidencesDescription": "Total de evidências detectadas",
+      "negativeEvidences": "Evidências Negativas",
+      "negativeEvidencesDescription": "Evidências com resultado negativo",
+      "negotiations": "Negociações",
+      "negotiationsDescription": "Total de negociações em andamento",
+      "categories": "Categorias",
+      "categoriesDescription": "Categorias únicas de palavras-chave",
+      "activeUsers": "Usuários Ativos",
+      "activeUsersDescription": "Membros da organização"
+    },
+    "chart": {
+      "title": "Evidências Negativas",
+      "description": "Quantidade de evidências negativas nos últimos 7 dias",
+      "evidence": "evidência",
+      "evidences": "evidências"
+    }
+  },
+  "keywords": {
+    "title": "Palavras-chave",
+    "subtitle": "Gerencie as palavras-chave da sua organização",
+    "addKeyword": "Adicionar Keyword",
+    "newKeyword": "Nova Keyword",
+    "editKeyword": "Editar Keyword",
+    "noKeywords": "Nenhuma keyword ainda",
+    "noKeywordsDescription": "Comece adicionando sua primeira keyword para começar a organizar seu conteúdo.",
+    "form": {
+      "newTitle": "Nova Keyword",
+      "editTitle": "Editar Keyword",
+      "newDescription": "Adicione uma nova keyword à sua organização",
+      "editDescription": "Atualize as informações da keyword",
+      "keyword": "Keyword",
+      "keywordPlaceholder": "minha-keyword",
+      "description": "Descrição",
+      "descriptionOptional": "Descrição (opcional)",
+      "descriptionPlaceholder": "Descreva o que esta keyword representa...",
+      "tags": "Tags",
+      "tagsOptional": "Tags (opcional)",
+      "tagsPlaceholder": "marca, produto, concorrente",
+      "tagsHelp": "Separe múltiplas tags por vírgula"
+    },
+    "messages": {
+      "created": "Keyword criada",
+      "updated": "Keyword atualizada",
+      "deleted": "Keyword excluída",
+      "deleteConfirm": "Tem certeza que deseja excluir esta keyword?"
+    }
+  },
+  "evidences": {
+    "title": "Evidências",
+    "subtitle": "Visualize as evidências detectadas",
+    "filterByType": "Filtrar por tipo",
+    "allEvidences": "Todas as evidências",
+    "positive": "Positivas",
+    "negative": "Negativas",
+    "positiveLabel": "Positiva",
+    "negativeLabel": "Negativa",
+    "noEvidences": "Nenhuma evidência encontrada",
+    "noEvidencesDescription": "Evidências serão criadas automaticamente pelo sistema de monitoramento",
+    "table": {
+      "status": "Status",
+      "keyword": "Palavra-chave",
+      "tags": "Tags",
+      "detectedAt": "Detectado em",
+      "actions": "Ações"
+    },
+    "detail": {
+      "title": "Detalhes da Evidência",
+      "domains": "Domínios Detectados",
+      "screenshots": "Capturas de Tela",
+      "noScreenshots": "Nenhuma captura de tela disponível",
+      "noDomains": "Nenhum domínio detectado"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "subtitle": "Gerencie suas informações pessoais",
+    "uploadPhoto": "Alterar foto",
+    "uploading": "Fazendo upload...",
+    "uploadHint": "JPG, PNG ou WebP. Máximo 2MB.",
+    "fullName": "Nome Completo",
+    "email": "Email",
+    "emailHint": "O email não pode ser alterado",
+    "saveChanges": "Salvar Alterações",
+    "messages": {
+      "avatarUpdated": "Avatar atualizado",
+      "avatarUpdatedDescription": "Sua foto de perfil foi atualizada",
+      "avatarError": "Erro ao fazer upload do avatar",
+      "avatarSizeError": "A imagem deve ter no máximo 2MB",
+      "avatarTypeError": "Apenas imagens são permitidas",
+      "profileUpdated": "Perfil atualizado",
+      "profileUpdatedDescription": "Suas informações foram atualizadas"
+    }
+  },
+  "organizations": {
+    "title": "Organizações",
+    "switchOrg": "Trocar organização",
+    "createOrg": "Criar organização",
+    "settings": {
+      "title": "Configurações",
+      "general": "Geral",
+      "members": "Membros",
+      "invitations": "Convites"
+    },
+    "members": {
+      "title": "Membros",
+      "subtitle": "Gerencie os membros da sua organização",
+      "inviteMember": "Convidar Membro",
+      "removeMember": "Remover membro",
+      "removeConfirm": "Tem certeza que deseja remover este membro?",
+      "you": "Você",
+      "roles": {
+        "admin": "Admin",
+        "member": "Membro"
+      }
+    },
+    "invitations": {
+      "title": "Convites",
+      "subtitle": "Gerencie os convites pendentes",
+      "noInvitations": "Nenhum convite pendente",
+      "inviteDialog": {
+        "title": "Convidar Membro",
+        "description": "Envie um convite para adicionar um novo membro à organização",
+        "email": "Email",
+        "emailPlaceholder": "email@exemplo.com",
+        "emailDescription": "Email da pessoa que você deseja convidar",
+        "role": "Role",
+        "rolePlaceholder": "Selecione uma role",
+        "roleDescription": "Admins podem convidar e remover membros",
+        "submit": "Criar Convite",
+        "submitting": "Criando..."
+      },
+      "messages": {
+        "created": "Convite criado",
+        "createdDescription": "O link do convite está disponível na lista abaixo",
+        "revoked": "Convite revogado",
+        "accepted": "Convite aceito",
+        "expired": "Convite expirado"
+      },
+      "status": {
+        "pending": "Pendente",
+        "accepted": "Aceito",
+        "expired": "Expirado"
+      }
+    }
+  },
+  "integrations": {
+    "title": "Integrações",
+    "subtitle": "Conecte suas plataformas de anúncios",
+    "connected": "Conectado",
+    "notConnected": "Não conectado",
+    "connect": "Conectar",
+    "disconnect": "Desconectar",
+    "configure": "Configurar",
+    "providers": {
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "bingAds": "Bing Ads",
+      "googleSearchConsole": "Google Search Console"
+    }
+  },
+  "validation": {
+    "emailInvalid": "Email inválido",
+    "emailRequired": "Email é obrigatório",
+    "passwordRequired": "Senha é obrigatória",
+    "passwordMinLength": "Senha deve ter pelo menos {min} caracteres",
+    "nameRequired": "Nome é obrigatório",
+    "nameMinLength": "Nome deve ter pelo menos {min} caracteres",
+    "keywordRequired": "Keyword é obrigatória",
+    "keywordMaxLength": "Keyword deve ter no máximo {max} caracteres",
+    "descriptionMaxLength": "Descrição deve ter no máximo {max} caracteres",
+    "categoryMaxLength": "Categoria deve ter no máximo {max} caracteres",
+    "orgNameRequired": "Nome da organização é obrigatório",
+    "orgNameMinLength": "Nome deve ter pelo menos {min} caracteres"
+  },
+  "errors": {
+    "generic": "Ocorreu um erro. Tente novamente.",
+    "notAuthenticated": "Não autenticado",
+    "notAuthorized": "Sem permissão",
+    "notFound": "Não encontrado",
+    "serverError": "Erro no servidor"
+  },
+  "metadata": {
+    "login": {
+      "title": "Login - Adspika",
+      "description": "Faça login na sua conta"
+    },
+    "register": {
+      "title": "Criar Conta - Adspika",
+      "description": "Crie sua conta na Adspika"
+    },
+    "onboarding": {
+      "title": "Bem-vindo - Adspika",
+      "description": "Crie sua primeira organização"
+    },
+    "dashboard": {
+      "title": "Dashboard - Adspika",
+      "description": "Visão geral da sua organização"
+    }
+  }
+}

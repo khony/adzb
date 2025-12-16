@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useTransition, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -30,6 +31,7 @@ interface ProfileFormProps {
 }
 
 export function ProfileForm({ profile }: ProfileFormProps) {
+  const router = useRouter()
   const { toast } = useToast()
   const [isPending, startTransition] = useTransition()
   const [avatarUrl, setAvatarUrl] = useState(profile.avatar_url)
@@ -91,6 +93,8 @@ export function ProfileForm({ profile }: ProfileFormProps) {
           title: 'Avatar atualizado',
           description: 'Sua foto de perfil foi atualizada',
         })
+        // Refresh to update avatar in sidebar
+        router.refresh()
       }
     } else {
       toast({

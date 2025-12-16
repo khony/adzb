@@ -21,12 +21,12 @@ export async function uploadAvatar(file: File, userId: string): Promise<string |
     return null
   }
 
-  // Get public URL
+  // Get public URL with cache buster to prevent browser caching
   const {
     data: { publicUrl },
   } = supabase.storage.from('avatars').getPublicUrl(filePath)
 
-  return publicUrl
+  return `${publicUrl}?t=${Date.now()}`
 }
 
 export async function uploadOrgLogo(
@@ -53,10 +53,10 @@ export async function uploadOrgLogo(
     return null
   }
 
-  // Get public URL
+  // Get public URL with cache buster to prevent browser caching
   const {
     data: { publicUrl },
   } = supabase.storage.from('avatars').getPublicUrl(filePath)
 
-  return publicUrl
+  return `${publicUrl}?t=${Date.now()}`
 }
