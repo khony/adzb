@@ -55,10 +55,10 @@ export function useNegotiations(
               .select(
                 `
                 *,
-                evidences(
+                evidences!evidence_id(
                   id,
                   detected_at,
-                  keywords(keyword)
+                  keywords!keyword_id(keyword)
                 )
               `
               )
@@ -68,7 +68,12 @@ export function useNegotiations(
                 if (data) {
                   const mappedItem = {
                     ...data,
-                    evidence: Array.isArray(data.evidences) ? data.evidences[0] : data.evidences,
+                    evidence: data.evidences
+                      ? {
+                          ...data.evidences,
+                          keyword: data.evidences.keywords,
+                        }
+                      : null,
                   } as NegotiationWithEvidence
                   setNegotiations((prev) => [mappedItem, ...prev])
                 }
@@ -83,10 +88,10 @@ export function useNegotiations(
               .select(
                 `
                 *,
-                evidences(
+                evidences!evidence_id(
                   id,
                   detected_at,
-                  keywords(keyword)
+                  keywords!keyword_id(keyword)
                 )
               `
               )
@@ -96,7 +101,12 @@ export function useNegotiations(
                 if (data) {
                   const mappedItem = {
                     ...data,
-                    evidence: Array.isArray(data.evidences) ? data.evidences[0] : data.evidences,
+                    evidence: data.evidences
+                      ? {
+                          ...data.evidences,
+                          keyword: data.evidences.keywords,
+                        }
+                      : null,
                   } as NegotiationWithEvidence
                   setNegotiations((prev) =>
                     prev.map((n) => (n.id === mappedItem.id ? mappedItem : n))
@@ -113,10 +123,10 @@ export function useNegotiations(
             .select(
               `
               *,
-              evidences(
+              evidences!evidence_id(
                 id,
                 detected_at,
-                keywords(keyword)
+                keywords!keyword_id(keyword)
               )
             `
             )
@@ -138,7 +148,12 @@ export function useNegotiations(
           } else {
             const mappedData = data?.map((item: any) => ({
               ...item,
-              evidence: Array.isArray(item.evidences) ? item.evidences[0] : item.evidences,
+              evidence: item.evidences
+                ? {
+                    ...item.evidences,
+                    keyword: item.evidences.keywords,
+                  }
+                : null,
             })) as NegotiationWithEvidence[]
             setNegotiations(mappedData || [])
           }
@@ -163,10 +178,10 @@ export function useNegotiations(
       .select(
         `
         *,
-        evidences(
+        evidences!evidence_id(
           id,
           detected_at,
-          keywords(keyword)
+          keywords!keyword_id(keyword)
         )
       `
       )
@@ -183,7 +198,12 @@ export function useNegotiations(
     if (!error && data) {
       const mappedData = data.map((item: any) => ({
         ...item,
-        evidence: Array.isArray(item.evidences) ? item.evidences[0] : item.evidences,
+        evidence: item.evidences
+          ? {
+              ...item.evidences,
+              keyword: item.evidences.keywords,
+            }
+          : null,
       })) as NegotiationWithEvidence[]
       setNegotiations(mappedData)
     }

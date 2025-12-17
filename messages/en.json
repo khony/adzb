@@ -235,6 +235,16 @@
       }
     }
   },
+  "negotiations": {
+    "title": "Negotiations",
+    "subtitle": "Manage your negotiations",
+    "status": {
+      "pending": "Pending",
+      "in_progress": "In Progress",
+      "resolved": "Resolved",
+      "unresolved": "Unresolved"
+    }
+  },
   "integrations": {
     "title": "Integrations",
     "subtitle": "Connect your advertising platforms",

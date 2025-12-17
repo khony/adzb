@@ -235,6 +235,16 @@
       }
     }
   },
+  "negotiations": {
+    "title": "Negociações",
+    "subtitle": "Gerencie suas negociações",
+    "status": {
+      "pending": "Pendente",
+      "in_progress": "Em Andamento",
+      "resolved": "Resolvido",
+      "unresolved": "Não Resolvido"
+    }
+  },
   "integrations": {
     "title": "Integrações",
     "subtitle": "Conecte suas plataformas de anúncios",
