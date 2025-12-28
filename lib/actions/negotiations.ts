@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { negotiationSchema, updateNegotiationSchema } from '@/lib/validations/negotiation'
 import { revalidatePath } from 'next/cache'
 import type { NegotiationStatus } from '@/lib/types'
+import { sendNegotiationEmail } from '@/lib/email/negotiation-email'
 
 type ActionResult = {
   error?: string
@@ -68,6 +69,43 @@ export async function createNegotiation(
 
   if (error) {
     return { error: error.message }
+  }
+
+  // Upload de anexos (se houver)
+  const files = formData.getAll('attachments') as File[]
+  if (files.length > 0) {
+    for (const file of files) {
+      if (file.size > 0) {
+        // Upload para Supabase Storage
+        const filePath = `${organizationId}/${data.id}/${Date.now()}_${file.name}`
+        const { error: uploadError } = await supabase.storage
+          .from('negotiation-attachments')
+          .upload(filePath, file)
+
+        if (!uploadError) {
+          // Salvar metadados na tabela
+          await supabase.from('negotiation_attachments').insert({
+            negotiation_id: data.id,
+            file_name: file.name,
+            file_path: filePath,
+            file_size: file.size,
+            mime_type: file.type,
+            uploaded_by: user.id,
+          })
+        }
+      }
+    }
+  }
+
+  // Enviar email para os destinatários (após upload dos anexos)
+  const emailResult = await sendNegotiationEmail({
+    negotiationId: data.id,
+    organizationId,
+  })
+
+  if (!emailResult.success) {
+    console.error('Erro ao enviar email:', emailResult.error)
+    // Não retornar erro aqui, pois a negociação já foi criada
   }
 
   revalidatePath('/[orgSlug]/negotiations')

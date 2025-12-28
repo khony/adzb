@@ -81,12 +81,12 @@ export async function proxy(request: NextRequest) {
     pathWithoutLocale.startsWith('/register') ||
     pathWithoutLocale.startsWith('/api/auth')
 
-  // If not authenticated and trying to access protected route
-  if (!user && !isAuthRoute && pathWithoutLocale !== '/') {
+  // If not authenticated and trying to access protected route or root
+  if (!user && !isAuthRoute) {
     return NextResponse.redirect(new URL(`/${pathnameLocale}/login`, request.url))
   }
 
-  // If authenticated and trying to access auth route
+  // If authenticated and trying to access auth route or root
   if (user && (pathWithoutLocale === '/login' || pathWithoutLocale === '/register' || pathWithoutLocale === '/')) {
     // Check if user has an organization
     const { data: orgs } = await supabase

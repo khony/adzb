@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useState, useTransition, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { negotiationSchema, type NegotiationInput } from '@/lib/validations/negotiation'
@@ -33,6 +33,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { useToast } from '@/lib/hooks/use-toast'
 import { createClient } from '@/lib/supabase/client'
 import type { Negotiation } from '@/lib/types'
+import { Upload, X } from 'lucide-react'
 
 interface EvidenceOption {
   id: string
@@ -59,6 +60,8 @@ export function NegotiationForm({
   const [isPending, startTransition] = useTransition()
   const [evidences, setEvidences] = useState<EvidenceOption[]>([])
   const [loadingEvidences, setLoadingEvidences] = useState(false)
+  const [attachments, setAttachments] = useState<File[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const form = useForm<NegotiationInput>({
     resolver: zodResolver(negotiationSchema),
@@ -118,12 +121,29 @@ export function NegotiationForm({
     }
   }, [negotiation, form])
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (files) {
+      const newFiles = Array.from(files)
+      setAttachments((prev) => [...prev, ...newFiles])
+    }
+  }
+
+  const removeAttachment = (index: number) => {
+    setAttachments((prev) => prev.filter((_, i) => i !== index))
+  }
+
   async function onSubmit(values: NegotiationInput) {
     const formData = new FormData()
     formData.append('subject', values.subject)
     formData.append('content', values.content)
     formData.append('recipients', values.recipients)
     formData.append('evidence_id', values.evidence_id || '')
+
+    // Adicionar anexos ao FormData
+    attachments.forEach((file) => {
+      formData.append('attachments', file)
+    })
 
     startTransition(async () => {
       const result = negotiation
@@ -139,10 +159,11 @@ export function NegotiationForm({
       } else {
         toast({
           title: 'Sucesso',
-          description: negotiation ? 'Negociação atualizada' : 'Negociação criada',
+          description: negotiation ? 'Negociação atualizada' : 'Negociação criada e email enviado',
         })
         onOpenChange(false)
         form.reset()
+        setAttachments([])
         onSuccess?.()
       }
     })
@@ -250,6 +271,53 @@ export function NegotiationForm({
                 </FormItem>
               )}
             />
+
+            {!negotiation && (
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Anexos (opcional)</label>
+                <div className="space-y-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={isPending}
+                    className="w-full"
+                  >
+                    <Upload className="mr-2 h-4 w-4" />
+                    Adicionar Anexos
+                  </Button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*,.pdf,.doc,.docx,.xls,.xlsx"
+                  />
+                  {attachments.length > 0 && (
+                    <div className="space-y-1">
+                      {attachments.map((file, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between rounded-md border p-2 text-sm"
+                        >
+                          <span className="truncate">{file.name}</span>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => removeAttachment(index)}
+                            disabled={isPending}
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
             <div className="flex justify-end gap-2">
               <Button
